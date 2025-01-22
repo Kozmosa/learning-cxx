@@ -9,8 +9,16 @@ struct Tensor {
     T *data;
 
     Tensor(unsigned int const shape_[N]) {
+        // N: 张量的维度
+        // shape: 张量的形状
+        // data: 张量的数据
+        // size: 张量的大小（占用的内存空间）
         unsigned int size = 1;
         // TODO: 填入正确的 shape 并计算 size
+        for(int i = 0; i < N; i++){
+            shape[i] = shape_[i];
+            size *= shape[i];
+        }
         data = new T[size];
         std::memset(data, 0, size * sizeof(T));
     }
@@ -23,6 +31,7 @@ struct Tensor {
     Tensor(Tensor &&) noexcept = delete;
 
     T &operator[](unsigned int const indices[N]) {
+        // 传入的参数是一个 N 维数组，表示张量的索引
         return data[data_index(indices)];
     }
     T const &operator[](unsigned int const indices[N]) const {
@@ -35,6 +44,7 @@ private:
         for (unsigned int i = 0; i < N; ++i) {
             ASSERT(indices[i] < shape[i], "Invalid index");
             // TODO: 计算 index
+            index += indices[i] * shape[i];
         }
         return index;
     }
