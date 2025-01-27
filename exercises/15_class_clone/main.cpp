@@ -5,7 +5,7 @@
 
 
 class DynFibonacci {
-    size_t *cache;
+    unsigned long long *cache;
     int cached;
 
 public:

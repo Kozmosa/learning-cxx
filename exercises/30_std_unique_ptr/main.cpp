@@ -2,6 +2,8 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <cstring>
+#include <cstdio>
 
 // READ: `std::unique_ptr` <https://zh.cppreference.com/w/cpp/memory/unique_ptr>
 
